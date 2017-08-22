@@ -98,11 +98,8 @@ module.exports = {
                     {type: 'object'},
                     jst.boolean(),
                 ]
-            )
-            .done(),
-        propInteger: jst.integer().min(10).max(100)
-            .eMax()
-            .done(),
+            ).done(),
+        propInteger: jst.integer().min(10).max(100).eMax().done(),
         propNumber: jst.number().enum([1, 3, 5, 7, 9]).done(),
         propString: jst.string().pattern(/^\w+$/).done(),
         propEnum: jst.enum('viva', 'vita'),
@@ -368,7 +365,7 @@ Arguments - `Object`
 
 Example
 ```javascript
-jst.not({type: 'string'})
+jst.not({type: 'string'});
 ```
 
 Result
@@ -404,7 +401,7 @@ Example
 jst.oneOf(
     [
         { type: 'number', multipleOf: 5 },
-        jst.number().multipleOf(3)
+        jst.number().multipleOf(3).done()
     ]
 );
 ```
@@ -459,6 +456,10 @@ Result
 }
 ```
 [<p align="right">up to navigation</p>](#navigation)
+
+
+
+
 
 ### <a name="jst-array">.array()</a>
 Arguments - no  
@@ -570,109 +571,726 @@ Result
 ```
 [<p align="right">up to navigation</p>](#navigation)
 
+#### <a name="jst-integer-done">.array().done()</a>
+Arguments - no  
+Finalize creation JSON schema template by type and return complete object. 
+
+Example
+```javascript
+jst.array().max(10).done();
+```
+
+Result
+```json
+{
+  "type": "array",
+  "maxItems": 10
+}
+```
+[<p align="right">up to navigation</p>](#navigation)
+
+
+
+
 
 ### <a name="jst-integer">.integer()</a>
+Arguments - no  
+
+Example
+```javascript
+jst.integer().done();
+```
+
+Result
+```json
+{
+  "type": "integer"
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-integer-allof">.integer().allOf()</a>
+#### <a name="jst-integer-allof">.integer().allOf(arg[, arg2[, arg3]...])</a>
+Arguments - `Object[]|Object`  
+Can accept mix of `Object[]` and `Object`
+
+Example
+```javascript
+jst.integer().allOf(
+ [
+     { type: 'integer' },
+     { maximum: 5 }
+ ]
+).done();
+```
+
+Result
+```json
+{
+  "type": "integer",
+  "allOf": [
+    { "type": "integer" },
+    { "maximum": 5 }
+  ]
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-integer-anyof">.integer().anyOf()</a>
+#### <a name="jst-integer-anyof">.integer().anyOf(arg[, arg2[, arg3]...])</a>
+Arguments - `Object[]|Object`  
+Can accept mix of `Object[]` and `Object`
+
+Example
+```javascript
+jst.integer().anyOf(
+    [
+        {type: 'integer', enum: [1, 5, 10]},
+        jst.integer().min(10).done()
+    ]
+).done();
+```
+
+Result
+```json
+{
+  "anyOf": [
+    {
+      "type": "integer",
+      "enum": [1, 5, 10]
+    },
+    {
+      "type": "integer",
+      "minimum": 10
+    }
+  ]
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-integer-emax">.integer().eMax()</a>
+Arguments - no   
+
+Example
+```javascript
+jst.integer().eMax().done();
+```
+
+Result
+```json
+{
+  "type": "integer",
+  "exclusiveMaximum": true
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-integer-emin">.integer().eMin()</a>
+Arguments - no   
+
+Example
+```javascript
+jst.integer().eMin().done();
+```
+
+Result
+```json
+{
+  "type": "integer",
+  "exclusiveMinimum": true
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-integer-enum">.integer().enum()</a>
+#### <a name="jst-integer-enum">.integer().enum(arg[, arg2[, arg3]...])</a>
+Arguments - `Array|*`  
+Can accept mix of `Array` and `*`
+
+Example
+```javascript
+jst.integer().enum([1, 2, 3]).done();
+```
+
+Result
+```json
+{
+  "type": "integer",
+  "enum": [1, 2, 3]
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-integer-max">.integer().max()</a>
+#### <a name="jst-integer-max">.integer().max(arg)</a>
+Arguments - `Number` as integer   
+
+Example
+```javascript
+jst.integer().max(10).done();
+```
+
+Result
+```json
+{
+  "type": "integer",
+  "maximum": 10
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-integer-min">.integer().min()</a>
+#### <a name="jst-integer-min">.integer().min(arg)</a>
+Arguments - `Number` as integer   
+
+Example
+```javascript
+jst.integer().min(1).done();
+```
+
+Result
+```json
+{
+  "type": "integer",
+  "minimum": 1
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-integer-multipleof">.integer().multipleOf()</a>
+#### <a name="jst-integer-multipleof">.integer().multipleOf(arg)</a>
+Arguments - positive `Number` as integer   
+
+Example
+```javascript
+jst.integer().multipleOf(10).done();
+```
+
+Result
+```json
+{
+  "type": "integer",
+  "multipleOf": 10
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-integer-not">.integer().not()</a>
+#### <a name="jst-integer-not">.integer().not(arg)</a>
+Arguments - `Object`
+
+Example
+```javascript
+jst.integer().not({enum: [1, 2, 3]}).done();
+```
+
+Result
+```json
+{
+  "type": "integer",
+  "not": {
+    "enum": [1, 2, 3]
+  }
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-integer-oneof">.integer().oneOf()</a>
+#### <a name="jst-integer-oneof">.integer().oneOf(arg[, arg2[, arg3]...])</a>
+Arguments - `Object[]|Object`  
+Can accept mix of `Object[]` and `Object`
+
+Example
+```javascript
+jst.integer().oneOf(
+    [
+        { type: 'integer', maximum: 5 },
+        jst.integer().max(3).done()
+    ]
+).done();
+```
+
+Result
+```json
+{
+  "oneOf": [
+    { "type": "integer", "maximum": 5 },
+    { "type": "integer", "maximum": 3 }
+  ]
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-integer-done">.integer().done()</a>
+Arguments - no  
+Finalize creation JSON schema template by type and return complete object. 
+
+Example
+```javascript
+jst.integer().max(10).done();
+```
+
+Result
+```json
+{
+  "type": "integer",
+  "maximum": 10
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
+
+
+
 
 
 ### <a name="jst-number">.number()</a>
+Arguments - no  
+
+Example
+```javascript
+jst.number().done();
+```
+
+Result
+```json
+{
+  "type": "number"
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-number-allof">.number().allOf()</a>
+#### <a name="jst-number-allof">.number().allOf(arg[, arg2[, arg3]...])</a>
+Arguments - `Object[]|Object`  
+Can accept mix of `Object[]` and `Object`
+
+Example
+```javascript
+jst.number().allOf(
+ [
+     { type: 'number' },
+     { maximum: 5 }
+ ]
+).done();
+```
+
+Result
+```json
+{
+  "type": "number",
+  "allOf": [
+    { "type": "number" },
+    { "maximum": 5 }
+  ]
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-number-anyof">.number().anyOf()</a>
+#### <a name="jst-number-anyof">.number().anyOf(arg[, arg2[, arg3]...])</a>
+Arguments - `Object[]|Object`  
+Can accept mix of `Object[]` and `Object`
+
+Example
+```javascript
+jst.number().anyOf(
+    [
+        {type: 'number', enum: [1, 5, 10]},
+        jst.number().min(10).done()
+    ]
+).done();
+```
+
+Result
+```json
+{
+  "anyOf": [
+    {
+      "type": "number",
+      "enum": [1, 5, 10]
+    },
+    {
+      "type": "number",
+      "minimum": 10
+    }
+  ]
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-number-emax">.number().eMax()</a>
+Arguments - no   
+
+Example
+```javascript
+jst.number().eMax().done();
+```
+
+Result
+```json
+{
+  "type": "number",
+  "exclusiveMaximum": true
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-number-emin">.number().eMin()</a>
+Arguments - no   
+
+Example
+```javascript
+jst.number().eMin().done();
+```
+
+Result
+```json
+{
+  "type": "number",
+  "exclusiveMinimum": true
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-number-enum">.number().enum()</a>
+#### <a name="jst-number-enum">.number().enum(arg[, arg2[, arg3]...])</a>
+Arguments - `Array|*`  
+Can accept mix of `Array` and `*`
+
+Example
+```javascript
+jst.number().enum([1.5, 2.5, 3.5]).done();
+```
+
+Result
+```json
+{
+  "type": "number",
+  "enum": [1.5, 2.5, 3.5]
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-number-max">.number().max()</a>
+#### <a name="jst-number-max">.number().max(arg)</a>
+Arguments - `Number`   
+
+Example
+```javascript
+jst.number().max(10.5).done();
+```
+
+Result
+```json
+{
+  "type": "number",
+  "maximum": 10.5
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-number-min">.number().min()</a>
+#### <a name="jst-number-min">.number().min(arg)</a>
+Arguments - `Number`   
+
+Example
+```javascript
+jst.number().min(1.5).done();
+```
+
+Result
+```json
+{
+  "type": "number",
+  "minimum": 1.5
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-number-multipleof">.number().multipleOf()</a>
+#### <a name="jst-number-multipleof">.number().multipleOf(arg)</a>
+Arguments - positive `Number` as integer   
+
+Example
+```javascript
+jst.number().multipleOf(10).done();
+```
+
+Result
+```json
+{
+  "type": "number",
+  "multipleOf": 10
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-number-not">.number().not()</a>
+#### <a name="jst-number-not">.number().not(arg)</a>
+Arguments - `Object`
+
+Example
+```javascript
+jst.number().not({enum: [1.5, 2.5, 3.5]}).done();
+```
+
+Result
+```json
+{
+  "type": "number",
+  "not": {
+    "enum": [
+      1.5,
+      2.5,
+      3.5
+    ]
+  }
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-number-oneof">.number().oneOf()</a>
+#### <a name="jst-number-oneof">.number().oneOf(arg[, arg2[, arg3]...])</a>
+Arguments - `Object[]|Object`  
+Can accept mix of `Object[]` and `Object`
+
+Example
+```javascript
+jst.number().oneOf(
+    [
+        { type: 'number', maximum: 5 },
+        jst.number().max(3).done()
+    ]
+).done();
+```
+
+Result
+```json
+{
+  "oneOf": [
+    { "type": "number", "maximum": 5 },
+    { "type": "number", "maximum": 3 }
+  ]
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-number-done">.number().done()</a>
+Arguments - no  
+Finalize creation JSON schema template by type and return complete object. 
+
+Example
+```javascript
+jst.number().max(10).done();
+```
+
+Result
+```json
+{
+  "type": "number",
+  "maximum": 10
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
+
+
+
 
 
 ### <a name="jst-string">.string()</a>
+Arguments - no  
+
+Example
+```javascript
+jst.string().done();
+```
+
+Result
+```json
+{
+  "type": "string"
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-string-allof">.string().allOf()</a>
+#### <a name="jst-string-allof">.string().allOf(arg[, arg2[, arg3]...])</a>
+Arguments - `Object[]|Object`  
+Can accept mix of `Object[]` and `Object`
+
+Example
+```javascript
+jst.string().allOf(
+ [
+     { type: 'string' },
+     { maxLength: 5 }
+ ]
+).done();
+```
+
+Result
+```json
+{
+  "type": "string",
+  "allOf": [
+    { "type": "string" },
+    { "maxLength": 5 }
+  ]
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-string-anyof">.string().anyOf()</a>
+#### <a name="jst-string-anyof">.string().anyOf(arg[, arg2[, arg3]...])</a>
+Arguments - `Object[]|Object`  
+Can accept mix of `Object[]` and `Object`
+
+Example
+```javascript
+jst.string().anyOf(
+    [
+        {type: 'string', pattern: "^\\d+$"},
+        jst.string().min(10).done()
+    ]
+).done();
+```
+
+Result
+```json
+{
+  "anyOf": [
+    {
+      "type": "string",
+      "pattern": "^\\d+$"
+    },
+    {
+      "type": "string",
+      "minLength": 10
+    }
+  ]
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-string-enum">.string().enum()</a>
+#### <a name="jst-string-enum">.string().enum(arg[, arg2[, arg3]...])</a>
+Arguments - `Array|*`  
+Can accept mix of `Array` and `*`
+
+Example
+```javascript
+jst.string().enum(['one', 'two', 'three']).done();
+```
+
+Result
+```json
+{
+  "type": "string",
+  "enum": [
+    "one",
+    "two",
+    "three"
+  ]
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-string-max">.string().max()</a>
+#### <a name="jst-string-max">.string().max(arg)</a>
+Arguments - positive `Number` as integer   
+
+Example
+```javascript
+jst.string().max(10).done();
+```
+
+Result
+```json
+{
+  "type": "string",
+  "maxLength": 10
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-string-min">.string().min()</a>
+#### <a name="jst-string-min">.string().min(arg)</a>
+Arguments - positive `Number` as integer   
+
+Example
+```javascript
+jst.string().min(1).done();
+```
+
+Result
+```json
+{
+  "type": "string",
+  "minLength": 1
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-string-not">.string().not()</a>
+#### <a name="jst-string-not">.string().not(arg)</a>
+Arguments - `Object`
+
+Example
+```javascript
+jst.string().not({enum: ['one', 'two', 'three']}).done();
+```
+
+Result
+```json
+{
+  "type": "string",
+  "not": {
+    "enum": [
+      "one",
+      "two",
+      "three"
+    ]
+  }
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-string-oneof">.string().oneOf()</a>
+#### <a name="jst-string-oneof">.string().oneOf(arg[, arg2[, arg3]...])</a>
+Arguments - `Object[]|Object`  
+Can accept mix of `Object[]` and `Object`
+
+Example
+```javascript
+jst.string().oneOf(
+    [
+        { type: 'string', maxLength: 5 },
+        jst.string().max(3).done()
+    ]
+).done();
+```
+
+Result
+```json
+{
+  "oneOf": [
+    { "type": "string", "maxLength": 5 },
+    { "type": "string", "maxLength": 3 }
+  ]
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-string-pattern">.string().pattern()</a>
+#### <a name="jst-string-pattern">.string().pattern(arg)</a>
+Arguments - `RegExp|String`   
+
+Example
+```javascript
+jst.string().pattern("^\\d+$").done();
+```
+
+Result
+```json
+{
+  "type": "string",
+  "pattern": "^\\d+$"
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-string-done">.string().done()</a>
+Arguments - no  
+Finalize creation JSON schema template by type and return complete object. 
+
+Example
+```javascript
+jst.string().max(10).done();
+```
+
+Result
+```json
+{
+  "type": "string",
+  "maxLength": 10
+}
+```
 [<p align="right">up to navigation</p>](#navigation)
 
 
