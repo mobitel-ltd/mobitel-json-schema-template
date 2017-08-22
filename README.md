@@ -5,7 +5,61 @@ A small helper for generating a JSON schema elements.
 
 ## <a name="navigation"></a>Navigation
 
-
+* [Install](install)
+* [Example](example)
+* [API](api)
+    * [Initializing](initializing)
+    * [.allOf()](jst-allof)
+    * [.anyOf()](jst-anyof)
+    * [.boolean()](jst-boolean)
+    * [.enum()](jst-enum)
+    * [.not()](jst-not)
+    * [.null()](jst-null)
+    * [.oneOf()](jst-oneof)
+    * [.ref()](jst-ref)
+    * [.stringFormat()](jst-string-format)
+    * [.array()](jst-array)
+        * [.array().additional()](jst-array-additional)
+        * [.array().items()](jst-array-items)
+        * [.array().max()](jst-array-max)
+        * [.array().min()](jst-array-min)
+        * [.array().unique()](jst-array-unique)
+    * [.integer()](jst-integer)
+        * [.integer().allOf()](jst-integer-allof)
+        * [.integer().anyOf()](jst-integer-anyof)
+        * [.integer().eMax()](jst-integer-emax)
+        * [.integer().eMin()](jst-integer-emin)
+        * [.integer().enum()](jst-integer-enum)
+        * [.integer().max()](jst-integer-max)
+        * [.integer().min()](jst-integer-min)
+        * [.integer().multipleOf()](jst-integer-multipleof)
+        * [.integer().not()](jst-integer-not)
+        * [.integer().oneOf()](jst-integer-oneof)
+        * [.integer().done()](jst-integer-done)
+    * [.number()](jst-number)
+        * [.number().allOf()](jst-number-allof)
+        * [.number().anyOf()](jst-number-anyof)
+        * [.number().eMax()](jst-number-emax)
+        * [.number().eMin()](jst-number-emin)
+        * [.number().enum()](jst-number-enum)
+        * [.number().max()](jst-number-max)
+        * [.number().min()](jst-number-min)
+        * [.number().multipleOf()](jst-number-multipleof)
+        * [.number().not()](jst-number-not)
+        * [.number().oneOf()](jst-number-oneof)
+        * [.number().done()](jst-number-done)
+    * [.string()](jst-string)
+        * [.string().allOf()](jst-string-allof)
+        * [.string().anyOf()](jst-string-anyof)
+        * [.string().enum()](jst-string-enum)
+        * [.string().max()](jst-string-max)
+        * [.string().min()](jst-string-min)
+        * [.string().not()](jst-string-not)
+        * [.string().oneOf()](jst-string-oneof)
+        * [.string().pattern()](jst-string-pattern)
+        * [.string().done()](jst-string-done)
+* [Testing](testing)
+* [License](license)
 
 ## <a name="install"></a>Install
 
@@ -13,7 +67,7 @@ A small helper for generating a JSON schema elements.
 
 ## <a name="example"></a>Example
 
-**Writing JSON-schema**
+Writing JSON-schema
 ```javascript
 const jst = require('mobitel-json-schema-template');
 
@@ -88,7 +142,7 @@ module.exports = {
 };
 ```
 
-**Result**
+Result
 ```json
 {
   "id": "exampleSchema",
@@ -208,10 +262,10 @@ const jst = require('mobitel-json-schema-template');
 Returns object for generating a JSON schema elements.
 
 ### <a name="jst-allof"></a>.allOf(arg[, arg2[, arg3]...])
-**Arguments** - `Object[]|Object`  
+Arguments - `Object[]|Object`  
 Can accept mix of `Object[]` and `Object`
 
-**Example**
+Example
 ```javascript
 jst.allOf(
     [
@@ -221,7 +275,7 @@ jst.allOf(
 );
 ```
 
-**Result**
+Result
 ```json
 {
   "allOf": [
@@ -230,12 +284,13 @@ jst.allOf(
   ]
 }
 ```
+[<p align="right">up to navigation</p>](#navigation)
 
 ### <a name="jst-anyof"></a>.anyOf(arg[, arg2[, arg3]...])
-**Arguments** - `Object[]|Object`  
+Arguments - `Object[]|Object`  
 Can accept mix of `Object[]` and `Object`
 
-**Example**
+Example
 ```javascript
 jst.anyOf(
     [
@@ -245,7 +300,7 @@ jst.anyOf(
 );
 ```
 
-**Result**
+Result
 ```json
 {
   "anyOf": [
@@ -256,7 +311,7 @@ jst.anyOf(
 ```
 
 ### <a name="jst-boolean"></a>.boolean([arg])
-**Arguments** - `Boolean` or `'all'` (default)
+Arguments - `Boolean` or `'all'` (default)
 
 **Example Boolean**
 ```javascript
@@ -284,15 +339,15 @@ jst.boolean();
 ```
 
 ### <a name="jst-enum"></a>.enum(arg[, arg2[, arg3]...])
-**Arguments** - `Array|*`  
+Arguments - `Array|*`  
 Can accept mix of `Array` and `*`
 
-**Example**
+Example
 ```javascript
 jst.enum(['one', 'two', 'three']);
 ```
 
-**Result**
+Result
 ```json
 {
   "enum": [
@@ -304,14 +359,14 @@ jst.enum(['one', 'two', 'three']);
 ```
 
 ### <a name="jst-not"></a>.not(arg)
-**Arguments** - `Object`
+Arguments - `Object`
 
-**Example**
+Example
 ```javascript
 jst.not({type: 'string'})
 ```
 
-**Result**
+Result
 ```json
 {
   "not": {"type": "string"}
@@ -319,14 +374,14 @@ jst.not({type: 'string'})
 ```
 
 ### <a name="jst-null"></a>.null()
-**Arguments** - no
+Arguments - no
 
-**Example**
+Example
 ```javascript
 jst.null();
 ```
 
-**Result**
+Result
 ```json
 {
   "type": "null"
@@ -334,10 +389,10 @@ jst.null();
 ```
 
 ### <a name="jst-oneof"></a>.oneOf(arg[, arg2[, arg3]...])
-**Arguments** - `Object[]|Object`  
+Arguments - `Object[]|Object`  
 Can accept mix of `Object[]` and `Object`
 
-**Example**
+Example
 ```javascript
 jst.oneOf(
     [
@@ -347,7 +402,7 @@ jst.oneOf(
 );
 ```
 
-**Result**
+Result
 ```json
 {
   "oneOf": [
@@ -358,14 +413,14 @@ jst.oneOf(
 ```
 
 ### <a name="jst-ref"></a>.ref(arg)
-**Arguments** - `String`
+Arguments - `String`
 
-**Example**
+Example
 ```javascript
 jst.ref('#/definitions/subschema');
 ```
 
-**Result**
+Result
 ```json
 {
   "$ref": "#/definitions/address"
@@ -373,7 +428,7 @@ jst.ref('#/definitions/subschema');
 ```
 
 ### <a name="jst-string-format"></a>.stringFormat(arg)
-**Arguments** - `String`  
+Arguments - `String`  
 Argument must be values like: 
 * date-time
 * email
@@ -382,12 +437,12 @@ Argument must be values like:
 * ipv6
 * uri
 
-**Example**
+Example
 ```javascript
 jst.stringFormat('hostname');
 ```
 
-**Result**
+Result
 ```json
 {
   "type": "string",
@@ -398,14 +453,14 @@ jst.stringFormat('hostname');
 
 
 ### <a name="jst-array"></a>.array()
-**Arguments** - no  
+Arguments - no  
 
-**Example**
+Example
 ```javascript
 jst.array().done();
 ```
 
-**Result**
+Result
 ```json
 {
   "type": "array"
@@ -413,14 +468,14 @@ jst.array().done();
 ```
 
 #### <a name="jst-array-additional"></a>.array().additional(arg)
-**Arguments** - `Boolean`  
+Arguments - `Boolean`  
 
-**Example**
+Example
 ```javascript
 jst.array().additional(true).done();
 ```
 
-**Result**
+Result
 ```json
 {
   "type": "array",
@@ -429,10 +484,10 @@ jst.array().additional(true).done();
 ```
 
 #### <a name="jst-array-items"></a>.array().items(arg[, arg2[, arg3]...])
-**Arguments** - `Object[]|Object`  
+Arguments - `Object[]|Object`  
 Can accept mix of `Object[]` and `Object`
 
-**Example**
+Example
 ```javascript
 jst.array().items(
     [
@@ -442,7 +497,7 @@ jst.array().items(
 ).done();
 ```
 
-**Result**
+Result
 ```json
 {
   "type": "array",
@@ -454,14 +509,14 @@ jst.array().items(
 ```
 
 #### <a name="jst-array-max"></a>.array().max(arg)
-**Arguments** - positive `Number`  
+Arguments - positive `Number`  
 
-**Example**
+Example
 ```javascript
 jst.array().max(10).done();
 ```
 
-**Result**
+Result
 ```json
 {
   "type": "array",
@@ -470,14 +525,14 @@ jst.array().max(10).done();
 ```
 
 #### <a name="jst-array-min"></a>.array().min(arg)
-**Arguments** - positive `Number`  
+Arguments - positive `Number`  
 
-**Example**
+Example
 ```javascript
 jst.array().min(1).done();
 ```
 
-**Result**
+Result
 ```json
 {
   "type": "array",
@@ -486,14 +541,14 @@ jst.array().min(1).done();
 ```
 
 #### <a name="jst-array-unique"></a>.array().unique()
-**Arguments** - no  
+Arguments - no  
 
-**Example**
+Example
 ```javascript
 jst.array().unique().done();
 ```
 
-**Result**
+Result
 ```json
 {
   "type": "array",
