@@ -3,69 +3,69 @@ A small helper for generating a JSON schema elements.
 
 > What is JSON schema? Look [here](http://json-schema.org/) and [here](https://spacetelescope.github.io/understanding-json-schema/) 
 
-## <a name="navigation"></a>Navigation
+## <a name="navigation">Navigation</a>
 
-* [Install](install)
-* [Example](example)
-* [API](api)
-    * [Initializing](initializing)
-    * [.allOf()](jst-allof)
-    * [.anyOf()](jst-anyof)
-    * [.boolean()](jst-boolean)
-    * [.enum()](jst-enum)
-    * [.not()](jst-not)
-    * [.null()](jst-null)
-    * [.oneOf()](jst-oneof)
-    * [.ref()](jst-ref)
-    * [.stringFormat()](jst-string-format)
-    * [.array()](jst-array)
-        * [.array().additional()](jst-array-additional)
-        * [.array().items()](jst-array-items)
-        * [.array().max()](jst-array-max)
-        * [.array().min()](jst-array-min)
-        * [.array().unique()](jst-array-unique)
-    * [.integer()](jst-integer)
-        * [.integer().allOf()](jst-integer-allof)
-        * [.integer().anyOf()](jst-integer-anyof)
-        * [.integer().eMax()](jst-integer-emax)
-        * [.integer().eMin()](jst-integer-emin)
-        * [.integer().enum()](jst-integer-enum)
-        * [.integer().max()](jst-integer-max)
-        * [.integer().min()](jst-integer-min)
-        * [.integer().multipleOf()](jst-integer-multipleof)
-        * [.integer().not()](jst-integer-not)
-        * [.integer().oneOf()](jst-integer-oneof)
-        * [.integer().done()](jst-integer-done)
-    * [.number()](jst-number)
-        * [.number().allOf()](jst-number-allof)
-        * [.number().anyOf()](jst-number-anyof)
-        * [.number().eMax()](jst-number-emax)
-        * [.number().eMin()](jst-number-emin)
-        * [.number().enum()](jst-number-enum)
-        * [.number().max()](jst-number-max)
-        * [.number().min()](jst-number-min)
-        * [.number().multipleOf()](jst-number-multipleof)
-        * [.number().not()](jst-number-not)
-        * [.number().oneOf()](jst-number-oneof)
-        * [.number().done()](jst-number-done)
-    * [.string()](jst-string)
-        * [.string().allOf()](jst-string-allof)
-        * [.string().anyOf()](jst-string-anyof)
-        * [.string().enum()](jst-string-enum)
-        * [.string().max()](jst-string-max)
-        * [.string().min()](jst-string-min)
-        * [.string().not()](jst-string-not)
-        * [.string().oneOf()](jst-string-oneof)
-        * [.string().pattern()](jst-string-pattern)
-        * [.string().done()](jst-string-done)
-* [Testing](testing)
-* [License](license)
+* [Install](#install)
+* [Example](#example)
+* [API](#api)
+    * [Initializing](#initializing)
+    * [.allOf()](#jst-allof)
+    * [.anyOf()](#jst-anyof)
+    * [.boolean()](#jst-boolean)
+    * [.enum()](#jst-enum)
+    * [.not()](#jst-not)
+    * [.null()](#jst-null)
+    * [.oneOf()](#jst-oneof)
+    * [.ref()](#jst-ref)
+    * [.stringFormat()](#jst-string-format)
+    * [.array()](#jst-array)
+        * [.array().additional()](#jst-array-additional)
+        * [.array().items()](#jst-array-items)
+        * [.array().max()](#jst-array-max)
+        * [.array().min()](#jst-array-min)
+        * [.array().unique()](#jst-array-unique)
+    * [.integer()](#jst-integer)
+        * [.integer().allOf()](#jst-integer-allof)
+        * [.integer().anyOf()](#jst-integer-anyof)
+        * [.integer().eMax()](#jst-integer-emax)
+        * [.integer().eMin()](#jst-integer-emin)
+        * [.integer().enum()](#jst-integer-enum)
+        * [.integer().max()](#jst-integer-max)
+        * [.integer().min()](#jst-integer-min)
+        * [.integer().multipleOf()](#jst-integer-multipleof)
+        * [.integer().not()](#jst-integer-not)
+        * [.integer().oneOf()](#jst-integer-oneof)
+        * [.integer().done()](#jst-integer-done)
+    * [.number()](#jst-number)
+        * [.number().allOf()](#jst-number-allof)
+        * [.number().anyOf()](#jst-number-anyof)
+        * [.number().eMax()](#jst-number-emax)
+        * [.number().eMin()](#jst-number-emin)
+        * [.number().enum()](#jst-number-enum)
+        * [.number().max()](#jst-number-max)
+        * [.number().min()](#jst-number-min)
+        * [.number().multipleOf()](#jst-number-multipleof)
+        * [.number().not()](#jst-number-not)
+        * [.number().oneOf()](#jst-number-oneof)
+        * [.number().done()](#jst-number-done)
+    * [.string()](#jst-string)
+        * [.string().allOf()](#jst-string-allof)
+        * [.string().anyOf()](#jst-string-anyof)
+        * [.string().enum()](#jst-string-enum)
+        * [.string().max()](#jst-string-max)
+        * [.string().min()](#jst-string-min)
+        * [.string().not()](#jst-string-not)
+        * [.string().oneOf()](#jst-string-oneof)
+        * [.string().pattern()](#jst-string-pattern)
+        * [.string().done()](#jst-string-done)
+* [Testing](#testing)
+* [License](#license)
 
-## <a name="install"></a>Install
+## <a name="install">Install</a>
 
     npm i --save mobitel-json-schema-template
 
-## <a name="example"></a>Example
+## <a name="example">Example</a>
 
 Writing JSON-schema
 ```javascript
@@ -251,17 +251,19 @@ Result
   }
 }
 ```
+[<p align="right">up to navigation</p>](#navigation)
 
-## <a name="api"></a>API
+## <a name="api">API</a>
 
-### <a name="initializing"></a>Initializing
+### <a name="initializing">Initializing</a>
 
 ```javascript
 const jst = require('mobitel-json-schema-template');
 ```
 Returns object for generating a JSON schema elements.
+[<p align="right">up to navigation</p>](#navigation)
 
-### <a name="jst-allof"></a>.allOf(arg[, arg2[, arg3]...])
+### <a name="jst-allof">.allOf(arg[, arg2[, arg3]...])</a>
 Arguments - `Object[]|Object`  
 Can accept mix of `Object[]` and `Object`
 
@@ -286,7 +288,7 @@ Result
 ```
 [<p align="right">up to navigation</p>](#navigation)
 
-### <a name="jst-anyof"></a>.anyOf(arg[, arg2[, arg3]...])
+### <a name="jst-anyof">.anyOf(arg[, arg2[, arg3]...])</a>
 Arguments - `Object[]|Object`  
 Can accept mix of `Object[]` and `Object`
 
@@ -309,8 +311,9 @@ Result
   ]
 }
 ```
+[<p align="right">up to navigation</p>](#navigation)
 
-### <a name="jst-boolean"></a>.boolean([arg])
+### <a name="jst-boolean">.boolean([arg])</a>
 Arguments - `Boolean` or `'all'` (default)
 
 **Example Boolean**
@@ -337,8 +340,9 @@ jst.boolean();
   "type": "boolean"
 }
 ```
+[<p align="right">up to navigation</p>](#navigation)
 
-### <a name="jst-enum"></a>.enum(arg[, arg2[, arg3]...])
+### <a name="jst-enum">.enum(arg[, arg2[, arg3]...])</a>
 Arguments - `Array|*`  
 Can accept mix of `Array` and `*`
 
@@ -357,8 +361,9 @@ Result
   ]
 }
 ```
+[<p align="right">up to navigation</p>](#navigation)
 
-### <a name="jst-not"></a>.not(arg)
+### <a name="jst-not">.not(arg)</a>
 Arguments - `Object`
 
 Example
@@ -372,8 +377,9 @@ Result
   "not": {"type": "string"}
 }
 ```
+[<p align="right">up to navigation</p>](#navigation)
 
-### <a name="jst-null"></a>.null()
+### <a name="jst-null">.null()</a>
 Arguments - no
 
 Example
@@ -387,8 +393,9 @@ Result
   "type": "null"
 }
 ```
+[<p align="right">up to navigation</p>](#navigation)
 
-### <a name="jst-oneof"></a>.oneOf(arg[, arg2[, arg3]...])
+### <a name="jst-oneof">.oneOf(arg[, arg2[, arg3]...])</a>
 Arguments - `Object[]|Object`  
 Can accept mix of `Object[]` and `Object`
 
@@ -411,8 +418,9 @@ Result
   ]
 }
 ```
+[<p align="right">up to navigation</p>](#navigation)
 
-### <a name="jst-ref"></a>.ref(arg)
+### <a name="jst-ref">.ref(arg)</a>
 Arguments - `String`
 
 Example
@@ -426,8 +434,9 @@ Result
   "$ref": "#/definitions/address"
 }
 ```
+[<p align="right">up to navigation</p>](#navigation)
 
-### <a name="jst-string-format"></a>.stringFormat(arg)
+### <a name="jst-string-format">.stringFormat(arg)</a>
 Arguments - `String`  
 Argument must be values like: 
 * date-time
@@ -449,10 +458,9 @@ Result
   "format": "hostname"
 }
 ```
+[<p align="right">up to navigation</p>](#navigation)
 
-
-
-### <a name="jst-array"></a>.array()
+### <a name="jst-array">.array()</a>
 Arguments - no  
 
 Example
@@ -466,8 +474,9 @@ Result
   "type": "array"
 }
 ```
+[<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-array-additional"></a>.array().additional(arg)
+#### <a name="jst-array-additional">.array().additional(arg)</a>
 Arguments - `Boolean`  
 
 Example
@@ -482,8 +491,9 @@ Result
   "additionalItems": true
 }
 ```
+[<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-array-items"></a>.array().items(arg[, arg2[, arg3]...])
+#### <a name="jst-array-items">.array().items(arg[, arg2[, arg3]...])</a>
 Arguments - `Object[]|Object`  
 Can accept mix of `Object[]` and `Object`
 
@@ -507,8 +517,9 @@ Result
   ]
 }
 ```
+[<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-array-max"></a>.array().max(arg)
+#### <a name="jst-array-max">.array().max(arg)</a>
 Arguments - positive `Number`  
 
 Example
@@ -523,8 +534,9 @@ Result
   "maxItems": 10
 }
 ```
+[<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-array-min"></a>.array().min(arg)
+#### <a name="jst-array-min">.array().min(arg)</a>
 Arguments - positive `Number`  
 
 Example
@@ -539,8 +551,9 @@ Result
   "minItems": 1
 }
 ```
+[<p align="right">up to navigation</p>](#navigation)
 
-#### <a name="jst-array-unique"></a>.array().unique()
+#### <a name="jst-array-unique">.array().unique()</a>
 Arguments - no  
 
 Example
@@ -555,49 +568,122 @@ Result
   "uniqueItems": true
 }
 ```
+[<p align="right">up to navigation</p>](#navigation)
 
 
-### <a name="jst-integer"></a>.integer()
-#### <a name="jst-integer-allof"></a>.integer().allOf()
-#### <a name="jst-integer-anyof"></a>.integer().anyOf()
-#### <a name="jst-integer-emax"></a>.integer().eMax()
-#### <a name="jst-integer-emin"></a>.integer().eMin()
-#### <a name="jst-integer-enum"></a>.integer().enum()
-#### <a name="jst-integer-max"></a>.integer().max()
-#### <a name="jst-integer-min"></a>.integer().min()
-#### <a name="jst-integer-multipleof"></a>.integer().multipleOf()
-#### <a name="jst-integer-not"></a>.integer().not()
-#### <a name="jst-integer-oneof"></a>.integer().oneOf()
-#### <a name="jst-integer-done"></a>.integer().done()
+### <a name="jst-integer">.integer()</a>
+[<p align="right">up to navigation</p>](#navigation)
 
-### <a name="jst-number"></a>.number()
-#### <a name="jst-number-allof"></a>.number().allOf()
-#### <a name="jst-number-anyof"></a>.number().anyOf()
-#### <a name="jst-number-emax"></a>.number().eMax()
-#### <a name="jst-number-emin"></a>.number().eMin()
-#### <a name="jst-number-enum"></a>.number().enum()
-#### <a name="jst-number-max"></a>.number().max()
-#### <a name="jst-number-min"></a>.number().min()
-#### <a name="jst-number-multipleof"></a>.number().multipleOf()
-#### <a name="jst-number-not"></a>.number().not()
-#### <a name="jst-number-oneof"></a>.number().oneOf()
-#### <a name="jst-number-done"></a>.number().done()
+#### <a name="jst-integer-allof">.integer().allOf()</a>
+[<p align="right">up to navigation</p>](#navigation)
 
-### <a name="jst-string"></a>.string()
-#### <a name="jst-string-allof"></a>.string().allOf()
-#### <a name="jst-string-anyof"></a>.string().anyOf()
-#### <a name="jst-string-enum"></a>.string().enum()
-#### <a name="jst-string-max"></a>.string().max()
-#### <a name="jst-string-min"></a>.string().min()
-#### <a name="jst-string-not"></a>.string().not()
-#### <a name="jst-string-oneof"></a>.string().oneOf()
-#### <a name="jst-string-pattern"></a>.string().pattern()
-#### <a name="jst-string-done"></a>.string().done()
+#### <a name="jst-integer-anyof">.integer().anyOf()</a>
+[<p align="right">up to navigation</p>](#navigation)
 
-## <a name="testing"></a>Testing
+#### <a name="jst-integer-emax">.integer().eMax()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-integer-emin">.integer().eMin()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-integer-enum">.integer().enum()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-integer-max">.integer().max()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-integer-min">.integer().min()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-integer-multipleof">.integer().multipleOf()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-integer-not">.integer().not()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-integer-oneof">.integer().oneOf()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-integer-done">.integer().done()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+
+### <a name="jst-number">.number()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-number-allof">.number().allOf()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-number-anyof">.number().anyOf()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-number-emax">.number().eMax()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-number-emin">.number().eMin()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-number-enum">.number().enum()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-number-max">.number().max()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-number-min">.number().min()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-number-multipleof">.number().multipleOf()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-number-not">.number().not()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-number-oneof">.number().oneOf()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-number-done">.number().done()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+
+### <a name="jst-string">.string()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-string-allof">.string().allOf()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-string-anyof">.string().anyOf()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-string-enum">.string().enum()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-string-max">.string().max()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-string-min">.string().min()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-string-not">.string().not()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-string-oneof">.string().oneOf()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-string-pattern">.string().pattern()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+#### <a name="jst-string-done">.string().done()</a>
+[<p align="right">up to navigation</p>](#navigation)
+
+
+## <a name="testing">Testing</a>
 
     npm run test
+[<p align="right">up to navigation</p>](#navigation)
 
-## <a name="license"></a>License
+
+## <a name="license">License</a>
 MIT License  
 Copyright (c) 2017 Mobitel Ltd
+[<p align="right">up to navigation</p>](#navigation)
+
