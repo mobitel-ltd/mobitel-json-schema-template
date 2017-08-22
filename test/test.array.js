@@ -4,6 +4,7 @@ const assert = require('assert');
 const jst = require('../index.js');
 
 const testsAdditional = require('./array/test.array-additional.js');
+const testsDone = require('./array/test.array-done.js');
 const testsItems = require('./array/test.array-items.js');
 const testsMax = require('./array/test.array-max.js');
 const testsMin = require('./array/test.array-min.js');
@@ -44,6 +45,7 @@ describe('jst.array()', function() {
     });
 
     describe('jst.array().additional()', testsAdditional);
+    describe('jst.array().done()', testsDone);
     describe('jst.array().items()', testsItems);
     describe('jst.array().max()', testsMax);
     describe('jst.array().min()', testsMin);
