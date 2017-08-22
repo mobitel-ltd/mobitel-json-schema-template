@@ -1,6 +1,8 @@
 # Mobitel JSON-Schema template
 A small helper for generating a JSON schema elements.
 
+> What is JSON schema? Look [here](http://json-schema.org/) and [here](https://spacetelescope.github.io/understanding-json-schema/) 
+
 ## <a name="navigation"></a>Navigation
 
 
@@ -205,7 +207,7 @@ const jst = require('mobitel-json-schema-template');
 ```
 Returns object for generating a JSON schema elements.
 
-### <a name="jst-allof"></a>.allOf()
+### <a name="jst-allof"></a>.allOf(arg[, arg2[, arg3]...])
 **Arguments** - `Object[]|Object`  
 Can accept mix of `Object[]` and `Object`
 
@@ -213,8 +215,32 @@ Can accept mix of `Object[]` and `Object`
 ```javascript
 jst.allOf(
     [
-        {type: "string", maxLength: 5 },
-        {type: "number", minimum: 0}
+        { type: 'string' },
+        { maxLength: 5 }
+    ]
+);
+```
+
+**Result**
+```json
+{
+  "allOf": [
+    { "type": "string" },
+    { "maxLength": 5 }
+  ]
+}
+```
+
+### <a name="jst-anyof"></a>.anyOf(arg[, arg2[, arg3]...])
+**Arguments** - `Object[]|Object`  
+Can accept mix of `Object[]` and `Object`
+
+**Example**
+```javascript
+jst.anyOf(
+    [
+        {type: 'string'},
+        jst.number().done()
     ]
 );
 ```
@@ -223,190 +249,300 @@ jst.allOf(
 ```json
 {
   "anyOf": [
-    { "type": "string", "maxLength": 5 },
-    { "type": "number", "minimum": 0 }
+    { "type": "string" },
+    { "type": "number" }
   ]
 }
 ```
 
-### <a name=""></a>.anyOf()
-**Arguments**
+### <a name="jst-boolean"></a>.boolean([arg])
+**Arguments** - `Boolean` or `'all'` (default)
 
+**Example Boolean**
+```javascript
+jst.boolean(true);
+```
+
+**Result Boolean**
+```json
+{
+  "type": "boolean",
+  "enum": [true]
+}
+```
+
+**Example `'all'`**
+```javascript
+jst.boolean();
+```
+
+**Result `'all'`**
+```json
+{
+  "type": "boolean"
+}
+```
+
+### <a name="jst-enum"></a>.enum(arg[, arg2[, arg3]...])
+**Arguments** - `Array|*`  
+Can accept mix of `Array` and `*`
 
 **Example**
 ```javascript
-jst.
+jst.enum(['one', 'two', 'three']);
 ```
 
 **Result**
 ```json
 {
-  
+  "enum": [
+    "one",
+    "two",
+    "three"
+  ]
 }
 ```
 
-### <a name=""></a>.boolean()
-**Arguments**
-
+### <a name="jst-not"></a>.not(arg)
+**Arguments** - `Object`
 
 **Example**
 ```javascript
-jst.
+jst.not({type: 'string'})
 ```
 
 **Result**
 ```json
 {
-  
+  "not": {"type": "string"}
 }
 ```
 
-### <a name=""></a>.enum()
-**Arguments**
-
+### <a name="jst-null"></a>.null()
+**Arguments** - no
 
 **Example**
 ```javascript
-jst.
+jst.null();
 ```
 
 **Result**
 ```json
 {
-  
+  "type": "null"
 }
 ```
 
-### <a name=""></a>.not()
-**Arguments**
-
+### <a name="jst-oneof"></a>.oneOf(arg[, arg2[, arg3]...])
+**Arguments** - `Object[]|Object`  
+Can accept mix of `Object[]` and `Object`
 
 **Example**
 ```javascript
-jst.
+jst.oneOf(
+    [
+        { type: 'number', multipleOf: 5 },
+        jst.number().multipleOf(3)
+    ]
+);
 ```
 
 **Result**
 ```json
 {
-  
+  "oneOf": [
+    { "type": "number", "multipleOf": 5 },
+    { "type": "number", "multipleOf": 3 }
+  ]
 }
 ```
 
-### <a name=""></a>.null()
-**Arguments**
-
+### <a name="jst-ref"></a>.ref(arg)
+**Arguments** - `String`
 
 **Example**
 ```javascript
-jst.
+jst.ref('#/definitions/subschema');
 ```
 
 **Result**
 ```json
 {
-  
+  "$ref": "#/definitions/address"
 }
 ```
 
-### <a name=""></a>.oneOf()
-**Arguments**
-
+### <a name="jst-string-format"></a>.stringFormat(arg)
+**Arguments** - `String`  
+Argument must be values like: 
+* date-time
+* email
+* hostname
+* ipv4
+* ipv6
+* uri
 
 **Example**
 ```javascript
-jst.
+jst.stringFormat('hostname');
 ```
 
 **Result**
 ```json
 {
-  
+  "type": "string",
+  "format": "hostname"
 }
 ```
 
-### <a name=""></a>.ref()
-**Arguments**
 
+
+### <a name="jst-array"></a>.array()
+**Arguments** - no  
 
 **Example**
 ```javascript
-jst.
+jst.array().done();
 ```
 
 **Result**
 ```json
 {
-  
+  "type": "array"
 }
 ```
 
-### <a name=""></a>.stringFormat()
-**Arguments**
-
+#### <a name="jst-array-additional"></a>.array().additional(arg)
+**Arguments** - `Boolean`  
 
 **Example**
 ```javascript
-jst.
+jst.array().additional(true).done();
 ```
 
 **Result**
 ```json
 {
-  
+  "type": "array",
+  "additionalItems": true
+}
+```
+
+#### <a name="jst-array-items"></a>.array().items(arg[, arg2[, arg3]...])
+**Arguments** - `Object[]|Object`  
+Can accept mix of `Object[]` and `Object`
+
+**Example**
+```javascript
+jst.array().items(
+    [
+        {type: 'string'},
+        jst.number().done()
+    ]
+).done();
+```
+
+**Result**
+```json
+{
+  "type": "array",
+  "items": [
+    {"type": "string"},
+    {"type": "number"}
+  ]
+}
+```
+
+#### <a name="jst-array-max"></a>.array().max(arg)
+**Arguments** - positive `Number`  
+
+**Example**
+```javascript
+jst.array().max(10).done();
+```
+
+**Result**
+```json
+{
+  "type": "array",
+  "maxItems": 10
+}
+```
+
+#### <a name="jst-array-min"></a>.array().min(arg)
+**Arguments** - positive `Number`  
+
+**Example**
+```javascript
+jst.array().min(1).done();
+```
+
+**Result**
+```json
+{
+  "type": "array",
+  "minItems": 1
+}
+```
+
+#### <a name="jst-array-unique"></a>.array().unique()
+**Arguments** - no  
+
+**Example**
+```javascript
+jst.array().unique().done();
+```
+
+**Result**
+```json
+{
+  "type": "array",
+  "uniqueItems": true
 }
 ```
 
 
-### <a name=""></a>.array()
-#### <a name=""></a>.array().additional()
-#### <a name=""></a>.array().items()
-#### <a name=""></a>.array().max()
-#### <a name=""></a>.array().min()
-#### <a name=""></a>.array().unique()
+### <a name="jst-integer"></a>.integer()
+#### <a name="jst-integer-allof"></a>.integer().allOf()
+#### <a name="jst-integer-anyof"></a>.integer().anyOf()
+#### <a name="jst-integer-emax"></a>.integer().eMax()
+#### <a name="jst-integer-emin"></a>.integer().eMin()
+#### <a name="jst-integer-enum"></a>.integer().enum()
+#### <a name="jst-integer-max"></a>.integer().max()
+#### <a name="jst-integer-min"></a>.integer().min()
+#### <a name="jst-integer-multipleof"></a>.integer().multipleOf()
+#### <a name="jst-integer-not"></a>.integer().not()
+#### <a name="jst-integer-oneof"></a>.integer().oneOf()
+#### <a name="jst-integer-done"></a>.integer().done()
 
-### <a name=""></a>.integer()
-#### <a name=""></a>.integer().max()
-#### <a name=""></a>.integer().min()
-#### <a name=""></a>.integer().eMax()
-#### <a name=""></a>.integer().eMin()
-#### <a name=""></a>.integer().eMin()
-#### <a name=""></a>.integer().multipleOf()
-#### <a name=""></a>.integer().enum()
-#### <a name=""></a>.integer().allOf()
-#### <a name=""></a>.integer().anyOf()
-#### <a name=""></a>.integer().oneOf()
-#### <a name=""></a>.integer().not()
-#### <a name=""></a>.integer().done()
+### <a name="jst-number"></a>.number()
+#### <a name="jst-number-allof"></a>.number().allOf()
+#### <a name="jst-number-anyof"></a>.number().anyOf()
+#### <a name="jst-number-emax"></a>.number().eMax()
+#### <a name="jst-number-emin"></a>.number().eMin()
+#### <a name="jst-number-enum"></a>.number().enum()
+#### <a name="jst-number-max"></a>.number().max()
+#### <a name="jst-number-min"></a>.number().min()
+#### <a name="jst-number-multipleof"></a>.number().multipleOf()
+#### <a name="jst-number-not"></a>.number().not()
+#### <a name="jst-number-oneof"></a>.number().oneOf()
+#### <a name="jst-number-done"></a>.number().done()
 
-### <a name=""></a>.number()
-#### <a name=""></a>.number().max()
-#### <a name=""></a>.number().min()
-#### <a name=""></a>.number().eMax()
-#### <a name=""></a>.number().eMin()
-#### <a name=""></a>.number().multipleOf()
-#### <a name=""></a>.number().enum()
-#### <a name=""></a>.number().allOf()
-#### <a name=""></a>.number().anyOf()
-#### <a name=""></a>.number().oneOf()
-#### <a name=""></a>.number().not()
-#### <a name=""></a>.number().done()
+### <a name="jst-string"></a>.string()
+#### <a name="jst-string-allof"></a>.string().allOf()
+#### <a name="jst-string-anyof"></a>.string().anyOf()
+#### <a name="jst-string-enum"></a>.string().enum()
+#### <a name="jst-string-max"></a>.string().max()
+#### <a name="jst-string-min"></a>.string().min()
+#### <a name="jst-string-not"></a>.string().not()
+#### <a name="jst-string-oneof"></a>.string().oneOf()
+#### <a name="jst-string-pattern"></a>.string().pattern()
+#### <a name="jst-string-done"></a>.string().done()
 
-### <a name=""></a>.string()
-#### <a name=""></a>.string().min()
-#### <a name=""></a>.string().max()
-#### <a name=""></a>.string().pattern()
-#### <a name=""></a>.string().enum()
-#### <a name=""></a>.string().allOf()
-#### <a name=""></a>.string().anyOf()
-#### <a name=""></a>.string().not()
-#### <a name=""></a>.string().oneOf()
-#### <a name=""></a>.string().done()
-
-## <a name=""></a>Testing
+## <a name="testing"></a>Testing
 
     npm run test
 
-## <a name=""></a>License
+## <a name="license"></a>License
 MIT License  
 Copyright (c) 2017 Mobitel Ltd
