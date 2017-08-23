@@ -19,7 +19,7 @@
     "create",
     "mobitel"
   ],
-  "author": "Dmitry Furman aka PragmaWolf, Mobitel Ltd",
+  "author": "Dmitry Furman aka PragmaWolf, Mobitel Ltd <pragmawolf@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mobitel-ltd/mobitel-json-schema-template/issues"
