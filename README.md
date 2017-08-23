@@ -1,11 +1,11 @@
-# Mobitel JSON-Schema template
+# Mobitel Ltd. JSON-Schema template
 A small helper for generating a JSON schema elements.
 
-> What is JSON schema? Look [here](http://json-schema.org/) and [here](https://spacetelescope.github.io/understanding-json-schema/) 
+> What is JSON schema? Look [here](http://json-schema.org/) and [here](https://spacetelescope.github.io/understanding-json-schema/)
 
 ## <a name="navigation">Navigation</a>
 
-* [Install](#install)
+* [Installation](#installation)
 * [Example](#example)
 * [API](#api)
     * [Initializing](#initializing)
@@ -61,7 +61,7 @@ A small helper for generating a JSON schema elements.
 * [Testing](#testing)
 * [License](#license)
 
-## <a name="install">Install</a>
+## <a name="installation">Installation</a>
 
     npm i --save mobitel-json-schema-template
 
@@ -261,7 +261,7 @@ Returns object for generating a JSON schema elements.
 [<p align="right">up to navigation</p>](#navigation)
 
 ### <a name="jst-allof">.allOf(arg[, arg2[, arg3]...])</a>
-Arguments - `Object[]|Object`  
+Arguments - `Object[]|Object`
 Can accept mix of `Object[]` and `Object`
 
 Example
@@ -286,7 +286,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 ### <a name="jst-anyof">.anyOf(arg[, arg2[, arg3]...])</a>
-Arguments - `Object[]|Object`  
+Arguments - `Object[]|Object`
 Can accept mix of `Object[]` and `Object`
 
 Example
@@ -340,7 +340,7 @@ jst.boolean();
 [<p align="right">up to navigation</p>](#navigation)
 
 ### <a name="jst-enum">.enum(arg[, arg2[, arg3]...])</a>
-Arguments - `Array|*`  
+Arguments - `Array|*`
 Can accept mix of `Array` and `*`
 
 Example
@@ -393,7 +393,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 ### <a name="jst-oneof">.oneOf(arg[, arg2[, arg3]...])</a>
-Arguments - `Object[]|Object`  
+Arguments - `Object[]|Object`
 Can accept mix of `Object[]` and `Object`
 
 Example
@@ -434,8 +434,8 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 ### <a name="jst-string-format">.stringFormat(arg)</a>
-Arguments - `String`  
-Argument must be values like: 
+Arguments - `String`
+Argument must be values like:
 * date-time
 * email
 * hostname
@@ -462,7 +462,7 @@ Result
 
 
 ### <a name="jst-array">.array()</a>
-Arguments - no  
+Arguments - no
 
 Example
 ```javascript
@@ -478,7 +478,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-array-additional">.array().additional(arg)</a>
-Arguments - `Boolean`  
+Arguments - `Boolean`
 
 Example
 ```javascript
@@ -495,7 +495,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-array-items">.array().items(arg[, arg2[, arg3]...])</a>
-Arguments - `Object[]|Object`  
+Arguments - `Object[]|Object`
 Can accept mix of `Object[]` and `Object`
 
 Example
@@ -521,7 +521,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-array-max">.array().max(arg)</a>
-Arguments - positive `Number`  
+Arguments - positive `Number`
 
 Example
 ```javascript
@@ -538,7 +538,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-array-min">.array().min(arg)</a>
-Arguments - positive `Number`  
+Arguments - positive `Number`
 
 Example
 ```javascript
@@ -555,7 +555,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-array-unique">.array().unique()</a>
-Arguments - no  
+Arguments - no
 
 Example
 ```javascript
@@ -572,8 +572,8 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-integer-done">.array().done()</a>
-Arguments - no  
-Finalize creation JSON schema template by type and return complete object. 
+Arguments - no
+Finalize creation JSON schema template by type and return complete object.
 
 Example
 ```javascript
@@ -594,7 +594,7 @@ Result
 
 
 ### <a name="jst-integer">.integer()</a>
-Arguments - no  
+Arguments - no
 
 Example
 ```javascript
@@ -610,7 +610,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-integer-allof">.integer().allOf(arg[, arg2[, arg3]...])</a>
-Arguments - `Object[]|Object`  
+Arguments - `Object[]|Object`
 Can accept mix of `Object[]` and `Object`
 
 Example
@@ -636,7 +636,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-integer-anyof">.integer().anyOf(arg[, arg2[, arg3]...])</a>
-Arguments - `Object[]|Object`  
+Arguments - `Object[]|Object`
 Can accept mix of `Object[]` and `Object`
 
 Example
@@ -667,7 +667,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-integer-emax">.integer().eMax()</a>
-Arguments - no   
+Arguments - no
 
 Example
 ```javascript
@@ -684,7 +684,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-integer-emin">.integer().eMin()</a>
-Arguments - no   
+Arguments - no
 
 Example
 ```javascript
@@ -701,7 +701,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-integer-enum">.integer().enum(arg[, arg2[, arg3]...])</a>
-Arguments - `Array|*`  
+Arguments - `Array|*`
 Can accept mix of `Array` and `*`
 
 Example
@@ -719,7 +719,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-integer-max">.integer().max(arg)</a>
-Arguments - `Number` as integer   
+Arguments - `Number` as integer
 
 Example
 ```javascript
@@ -736,7 +736,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-integer-min">.integer().min(arg)</a>
-Arguments - `Number` as integer   
+Arguments - `Number` as integer
 
 Example
 ```javascript
@@ -753,7 +753,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-integer-multipleof">.integer().multipleOf(arg)</a>
-Arguments - positive `Number` as integer   
+Arguments - positive `Number` as integer
 
 Example
 ```javascript
@@ -789,7 +789,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-integer-oneof">.integer().oneOf(arg[, arg2[, arg3]...])</a>
-Arguments - `Object[]|Object`  
+Arguments - `Object[]|Object`
 Can accept mix of `Object[]` and `Object`
 
 Example
@@ -814,8 +814,8 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-integer-done">.integer().done()</a>
-Arguments - no  
-Finalize creation JSON schema template by type and return complete object. 
+Arguments - no
+Finalize creation JSON schema template by type and return complete object.
 
 Example
 ```javascript
@@ -836,7 +836,7 @@ Result
 
 
 ### <a name="jst-number">.number()</a>
-Arguments - no  
+Arguments - no
 
 Example
 ```javascript
@@ -852,7 +852,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-number-allof">.number().allOf(arg[, arg2[, arg3]...])</a>
-Arguments - `Object[]|Object`  
+Arguments - `Object[]|Object`
 Can accept mix of `Object[]` and `Object`
 
 Example
@@ -878,7 +878,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-number-anyof">.number().anyOf(arg[, arg2[, arg3]...])</a>
-Arguments - `Object[]|Object`  
+Arguments - `Object[]|Object`
 Can accept mix of `Object[]` and `Object`
 
 Example
@@ -909,7 +909,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-number-emax">.number().eMax()</a>
-Arguments - no   
+Arguments - no
 
 Example
 ```javascript
@@ -926,7 +926,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-number-emin">.number().eMin()</a>
-Arguments - no   
+Arguments - no
 
 Example
 ```javascript
@@ -943,7 +943,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-number-enum">.number().enum(arg[, arg2[, arg3]...])</a>
-Arguments - `Array|*`  
+Arguments - `Array|*`
 Can accept mix of `Array` and `*`
 
 Example
@@ -961,7 +961,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-number-max">.number().max(arg)</a>
-Arguments - `Number`   
+Arguments - `Number`
 
 Example
 ```javascript
@@ -978,7 +978,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-number-min">.number().min(arg)</a>
-Arguments - `Number`   
+Arguments - `Number`
 
 Example
 ```javascript
@@ -995,7 +995,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-number-multipleof">.number().multipleOf(arg)</a>
-Arguments - positive `Number` as integer   
+Arguments - positive `Number` as integer
 
 Example
 ```javascript
@@ -1035,7 +1035,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-number-oneof">.number().oneOf(arg[, arg2[, arg3]...])</a>
-Arguments - `Object[]|Object`  
+Arguments - `Object[]|Object`
 Can accept mix of `Object[]` and `Object`
 
 Example
@@ -1060,8 +1060,8 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-number-done">.number().done()</a>
-Arguments - no  
-Finalize creation JSON schema template by type and return complete object. 
+Arguments - no
+Finalize creation JSON schema template by type and return complete object.
 
 Example
 ```javascript
@@ -1082,7 +1082,7 @@ Result
 
 
 ### <a name="jst-string">.string()</a>
-Arguments - no  
+Arguments - no
 
 Example
 ```javascript
@@ -1098,7 +1098,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-string-allof">.string().allOf(arg[, arg2[, arg3]...])</a>
-Arguments - `Object[]|Object`  
+Arguments - `Object[]|Object`
 Can accept mix of `Object[]` and `Object`
 
 Example
@@ -1124,7 +1124,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-string-anyof">.string().anyOf(arg[, arg2[, arg3]...])</a>
-Arguments - `Object[]|Object`  
+Arguments - `Object[]|Object`
 Can accept mix of `Object[]` and `Object`
 
 Example
@@ -1155,7 +1155,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-string-enum">.string().enum(arg[, arg2[, arg3]...])</a>
-Arguments - `Array|*`  
+Arguments - `Array|*`
 Can accept mix of `Array` and `*`
 
 Example
@@ -1177,7 +1177,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-string-max">.string().max(arg)</a>
-Arguments - positive `Number` as integer   
+Arguments - positive `Number` as integer
 
 Example
 ```javascript
@@ -1194,7 +1194,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-string-min">.string().min(arg)</a>
-Arguments - positive `Number` as integer   
+Arguments - positive `Number` as integer
 
 Example
 ```javascript
@@ -1234,7 +1234,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-string-oneof">.string().oneOf(arg[, arg2[, arg3]...])</a>
-Arguments - `Object[]|Object`  
+Arguments - `Object[]|Object`
 Can accept mix of `Object[]` and `Object`
 
 Example
@@ -1259,7 +1259,7 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-string-pattern">.string().pattern(arg)</a>
-Arguments - `RegExp|String`   
+Arguments - `RegExp|String`
 
 Example
 ```javascript
@@ -1276,8 +1276,8 @@ Result
 [<p align="right">up to navigation</p>](#navigation)
 
 #### <a name="jst-string-done">.string().done()</a>
-Arguments - no  
-Finalize creation JSON schema template by type and return complete object. 
+Arguments - no
+Finalize creation JSON schema template by type and return complete object.
 
 Example
 ```javascript
@@ -1301,7 +1301,7 @@ Result
 
 
 ## <a name="license">License</a>
-MIT License  
+MIT License
 Copyright (c) 2017 Mobitel Ltd
 [<p align="right">up to navigation</p>](#navigation)
 
