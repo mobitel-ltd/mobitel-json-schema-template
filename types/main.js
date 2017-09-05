@@ -67,7 +67,7 @@ class MainTemplates {
                     continue;
                 }
 
-                if (!val || val.constructor !== Object || Object.keys(val).length === 0) {
+                if (!val || typeof val !== 'object' || Object.keys(val).length === 0) {
                     throw new ErrorHandler(`Has incorrect combining value: ${JSON.stringify(val)} (${typeof val})`);
                 }
 
@@ -94,7 +94,7 @@ class MainTemplates {
         }
 
         const val = args[0];
-        if (!val || val.constructor !== Object || Object.keys(val).length === 0) {
+        if (!val || typeof val !== 'object' || Array.isArray(val) || Object.keys(val).length === 0) {
             throw new ErrorHandler(`Has incorrect combining value: ${JSON.stringify(val)} (${typeof val})`);
         }
 
