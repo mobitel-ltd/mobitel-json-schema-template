@@ -8,20 +8,15 @@
   },
   "extends": [
     "eslint:recommended",
-    "google",
-    "plugin:import/errors"
+    "google"
   ],
   "env": {
     "es6": true,
     "browser": true,
     "node": true,
     "commonjs": true,
-    "shared-node-browser": true,
-    "mocha": true
+    "shared-node-browser": true
   },
-  "plugins": [
-    "import"
-  ],
   "rules": {
     "array-callback-return": [
       "error"
@@ -208,7 +203,7 @@
     "no-param-reassign": [
       "error",
       {
-        "props": true
+        "props": false
       }
     ],
     "no-prototype-builtins": [
@@ -278,6 +273,9 @@
     ],
     "no-useless-constructor": [
       "error"
+    ],
+    "no-useless-escape": [
+      "off"
     ],
     "no-useless-rename": [
       "error"
