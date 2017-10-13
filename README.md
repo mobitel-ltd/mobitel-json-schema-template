@@ -4,7 +4,7 @@ A small helper for generating a JSON schema elements.
 > What is JSON schema? Look [here](http://json-schema.org/) and [here](https://spacetelescope.github.io/understanding-json-schema/)
 
 ## Attention
-This module writing and testing on **NodeJs v.8.3** and **NPM v.5**.
+This module writing and testing on **NodeJs v.8+** and **NPM v.5+**.
 Using the module in previous versions of NodeJs does not guarantee its correct operation.
 
 ## <a name="navigation">Navigation</a>
@@ -1305,7 +1305,7 @@ Result
 
 
 ## <a name="license">License</a>
-MIT License
+MIT License.
 Copyright (c) 2017 Mobitel Ltd
 [<p align="right">up to navigation</p>](#navigation)
 
